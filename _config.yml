@@ -1,0 +1,36 @@
+github_username: fteiwtdt
+markdown: kramdown
+encoding: UTF-8
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+
+title: 我手寫我口
+description: 我手寫我口
+url: https://fteiwtdt.github.io
+
+permalink: /:title.page
+
+excerpt_separator: <!-- more -->
+excerpt_type: text # text|html
+
+plugins:
+  - jekyll-paginate
+# - jekyll-gist
+
+paginate: 8
+#paginate_path: /page:num/
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - CNAME

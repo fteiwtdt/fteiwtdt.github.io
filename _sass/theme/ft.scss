@@ -1,0 +1,150 @@
+@charset "utf-8";
+
+/* page */
+body {
+	font: $font-weight #{$font-size}/#{$line-height} $serif;
+	background: #FFF1E0;
+	color: #202020;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $sans-serif;
+}
+
+#header {
+	color: #D9534F;
+	background: #0C090A;
+	text-align: center;
+	line-height: 45px;
+}
+
+#footer {
+	padding: 10px 0;
+	border-top: 1px solid #FAE3D0;
+}
+
+footer {
+	text-align: center;
+	font-family: $sans-serif;
+	font-size: 10px;
+	color: #696969;
+
+	a {
+		color: #342D7E;
+		font-weight: $bold-font-weight;
+		border-bottom: 1px solid #342D7E;
+	}
+}
+
+.container {
+	margin: 0 auto;
+	padding: 0 10px;
+	width: 800px;
+}
+
+@media screen and (max-width: 740px) {
+	.container { width: 100%; }
+}
+
+/* page */
+.page {
+	a {
+		color: #342D7E;
+		border-bottom: 1px solid #342D7E;
+	}
+
+	.subtitle {
+		line-height: 2.5;
+		color: #D9534F;
+	}
+}
+
+.divider {
+	text-align: center;
+	font-family: $monospace;
+	font-size: 2.6*$font-size;
+	color: #106846;
+	-webkit-transition: 150ms ease-in-out;
+	-moz-transition: 150ms ease-in-out;
+	-o-transition: 500ms ease-in-out;
+}
+
+blockquote {
+	background: #F6F6F6;
+	border-left: 5px solid #657B83;
+}
+
+/* post */
+#post {
+	dl, ol, ul {
+		list-style-type: disc;
+		list-style-position: outside;
+		margin: 0 0 0.9*$font-size;
+	}
+
+	li {
+		margin-left: 2*$font-size;
+		font-style: italic;
+	}
+
+	p {
+		margin: 0 0 0.9*$font-size;
+		text-align: justify;
+		word-wrap: break-word;
+		-webkit-hyphens: auto;
+		-moz-hyphens: auto;
+		-ms-hyphens: auto;
+		-o-hyphens: auto;
+		hyphens: auto;
+	}
+}
+
+/* index */
+.post-entry {
+	margin: 10px 0;
+	background: #FBF6D9;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+	/*box-shadow: 0 0 5px #c2c2c2;
+	-webkit-box-shadow: 0 0 5px #c2c2c2;
+	-moz-box-shadow: 0 0 5px #c2c2c2;*/
+	border-top: 1px solid #FBFBE0;
+	border-radius: 2px;
+	padding: 5px;
+	color: #342D7E;
+	-webkit-tap-highlight-color: #FEFEFE;
+}
+
+.post-abstract {
+	margin-top: 0.5em;
+	font-size: 0.875 * $font-size;
+	font-style: italic;
+	padding-left: 2em;
+	//border-left: 4px solid #FFCBA4;
+}
+
+#post .highlighter-rouge {
+	margin: 0 0 0.9*$font-size;
+}
+
+/* code */
+pre code {
+	font: $font-weight #{$code-font-size}/#{$code-line-height} $monospace;
+}
+
+code {
+	font: $font-weight #{0.9*$font-size}/#{$line-height} $monospace;
+	/*
+	box-shadow: 0 1px 1px #ACACAC;
+	-webkit-box-shadow: 0 1px 1px #ACACAC;
+	background-color: #FFEECC;
+	padding: 1px 1px 2px;
+	border-radius: 3px;
+	*/
+}
+
+/*
+code::before, code::after {
+	letter-spacing: -0.2em;
+	content: '\A0';
+}
+*/

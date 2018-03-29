@@ -1,0 +1,17 @@
+---
+layout: page
+---
+<ul>
+	{% for post in paginator.posts %}
+	<li class="post-entry" onclick="location.href='{{ post.url }}'">
+		<h2>{{ post.title }}</h2>
+		<div class="post-abstract">
+			{% if site.excerpt_type == 'html' %}
+			{{ post.excerpt }}
+			{% else %}
+			{{ post.excerpt | strip_html | truncate: 350 }}
+			{% endif %}
+		</div>
+	</li>
+	{% endfor %}
+</ul>
