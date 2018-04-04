@@ -14,7 +14,7 @@ date: 2018-03-29
 ### CSS
 {: .subtitle}
 
-Jekyll默認的minima theme很不錯，不過想要護眼就要另外配置了。抄了[FT中文網](http://www.ftchinese.com)的護眼色調，代碼高亮選擇了深色主題的[Monokai](https://gist.github.com/wdullaer/e942cdd70d292e954166)。代碼顯示字體單純設置monospace在iOS上依然顯示為襯線字體，需要在CSS中額外添加「font-face」link到字體文件才有效果。iOS 6上的Safari對字體文件格式的支持度不是很廣，暫時使用體積較大的ttf。另按照《Mastering Regular Expressions》中提到的現代書信體格式設置段落間空一行。
+Jekyll默認的minima theme很不錯，不過想要護眼就要另外配置了。抄了[FT中文網](http://www.ftchinese.com)的護眼色調，代碼高亮選擇了深色主題的[Monokai](https://gist.github.com/wdullaer/e942cdd70d292e954166)。iOS缺少monospace字體而以sans顯示，需要在CSS中添加「font-face」link到等寬字體文件用於代碼顯示，使用支持較廣體積又小的woff格式。另按照《Mastering Regular Expressions》中提到的現代書信體格式設置段落間空一行。
 
 ```python
 def fibonacci():
