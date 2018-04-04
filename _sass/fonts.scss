@@ -4,28 +4,28 @@
 	font-family: 'DejaVu Sans Mono';
 	font-weight: 400;
 	font-style: normal;
-	src: url('../fonts/DejaVuSansMono.ttf') format('truetype');
+	src: url('../fonts/DejaVuSansMono.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'DejaVu Sans Mono';
 	font-weight: 400;
 	font-style: italic;
-	src: url('../fonts/DejaVuSansMono-Oblique.ttf') format('truetype');
+	src: url('../fonts/DejaVuSansMono-Oblique.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'DejaVu Sans Mono';
 	font-weight: 700;
 	font-style: normal;
-	src: url('../fonts/DejaVuSansMono-Bold.ttf') format('truetype');
+	src: url('../fonts/DejaVuSansMono-Bold.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'DejaVu Sans Mono';
 	font-weight: 700;
 	font-style: italic;
-	src: url('../fonts/DejaVuSansMono-BoldOblique.ttf') format('truetype');
+	src: url('../fonts/DejaVuSansMono-BoldOblique.woff') format('woff');
 }
 
 $font-size: 1rem;
