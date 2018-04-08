@@ -71,8 +71,10 @@ id msg_Send(id, SEL, ...);
 使用```#pragma mark```在Xcode中添加分割線和註記，方便瀏覽和跳轉：
 
 ```objc
-#pragma mark -//添加分割線，不可跟空格
-#pragma mark *LABEL* //添加註記
+//添加分割線，不可跟空格
+#pragma mark -
+//添加註記
+#pragma mark *LABEL*
 
 // or
 #pragma mark - *LABEL*
@@ -85,7 +87,7 @@ id msg_Send(id, SEL, ...);
 @implementation Foo
 #pragma mark -
 
-// Got divider
+// Got a divider
 @implementation Foo {}
 #pragma mark -
 ```
