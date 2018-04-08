@@ -21,7 +21,7 @@ Python中sequence有不少獨特之處，支持slice分片、負數值索引。�
 
 [[3]](#ref3): [Functional Programming HOWTO](https://docs.python.org/2.7/howto/functional.html#iterators)
 
-### being pythonic
+### Being pythonic
 {: .subtitle}
 以語言特性為基礎建立起一套編程模式，實現易維護擴展、穩定安全、優化性能，作為一種思維方式，是如今我對pythonic的理解。類似用CAD作圖操作2D的點、線，使用Rhinoceros作圖操作3D的面、體，不同方案不同觀念才是有效的應用方式。
 
