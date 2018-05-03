@@ -16,10 +16,12 @@ date: 2018-03-30
 
 ```objc
 // config.h
-FOUNDATION_EXTERN NSString *const GREETING;
+FOUNDATION_EXTERN NSString * const GREETING;
 // config.c
-NSString *const GREETING = @"Hello, world";
+NSString * const GREETING = @"Hello, world";
 ```
+
+在C中定義指向字符串常量的變量用```const char *```修飾。
 
 ### 指針變量
 {: .subtitle}
@@ -92,4 +94,4 @@ id msg_Send(id, SEL, ...);
 #pragma mark -
 ```
 
-在註釋中使用「```TODO:```」、「```FIXME:```」和「```MARK:```」也可以在XCode中顯示和跳轉。
+在註釋中使用```TODO:```、```FIXME:```和```MARK:```也可以在XCode中顯示和跳轉。

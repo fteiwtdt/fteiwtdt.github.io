@@ -70,8 +70,12 @@ footer {
 }
 
 blockquote {
-	background: #F6F6F6;
-	border-left: 5px solid #657B83;
+	background: #FFEECE;
+	border-top: 1px solid #785;
+	border-bottom: 1px solid #785;
+	padding: 5px 3px;
+	font-style: italic;
+	margin-bottom: 0.9*$font-size;
 }
 
 /* post */
@@ -97,6 +101,8 @@ blockquote {
 		-o-hyphens: auto;
 		hyphens: auto;
 	}
+
+	p:last-child { margin: 0; }
 }
 
 /* index */
