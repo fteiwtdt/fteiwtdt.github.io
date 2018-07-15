@@ -4,24 +4,45 @@ title: "ObjC筆記I：Misc"
 date: 2018-03-30
 ---
 
-### The “static”
+### Header files
 {: .subtitle}
 
-“A static function/variable is only 'seen' within translation unit.”<!-- more --> C語言中默認global，於是```static```被當成private使用。
-
-### 常量定義
-{: .subtitle}
-
-在頭文件中聲明，在源文件中定義：
+密歇根大學有一份[文檔](http://umich.edu/~eecs381/handouts/CHeaderFileGuidelines.pdf)詳細介紹了頭文件組織需要注意的規則，譬如在頭文件中聲明、源文件中定義<!-- more -->。通過這條規則來定義全局常量。定義C字符串常量的指針要用```const char *```修飾。
 
 ```objc
 // config.h
-FOUNDATION_EXTERN NSString * const GREETING;
+FOUNDATION_EXTERN NSString * const kGREETING;
 // config.c
-NSString * const GREETING = @"Hello, world";
+NSString * const kGREETING = @"Hello, world!";
 ```
 
-在C中定義字符串常量的指針變量用```const char *```修飾。
+對應地定義file scope私有變量是在源文件中使用```static```，“A static function/variable is only 'seen' within translate unit”。定義私有property的方式是使用class extension，定義只讀property的方式是在class extension中重聲明為readwrite。
+
+使用```#import```是為了防止重複包含，即所謂的「include guides」。傳統的做法是使用```#define```，其寫法也有幾種風格，BSD是把文件名大寫、前後帶下標。在文檔中解釋以下標開頭是C保留作內部實現的用法。另一種方法是使用```#pragma once```，優點是代碼更簡潔、預編譯更快，缺點是兼容性較差。譬如ARM就不推薦使用。此外在頭文件中減少不必要的```#import/include```、使用forward class declaration代替，可以使預編譯速度更快。
+
+```c
+// $FreeBSD: /usr/src/usr.bin/include/stdio.h
+#ifndef _STDIO_H_
+#define _STDIO_H_
+
+#endif /* !_STDIO_H */
+```
+
+對於```#include```的文件名使用引號和尖括號的區別，通常的解釋是引號表示從當前目錄開始搜索，尖括號表示從系統目錄開始搜索。不過也可以看到使用尖括號包含源碼目錄中的頭文件。[這裡](https://stackoverflow.com/questions/4118376/what-are-the-rules-on-include-xxx-h-vs-include-xxx-h)解釋其實尖括號表示從編譯器指定的目錄開始搜索。
+
+```c
+// OpenSSL/ssl/ssl.h
+#include <openssl/crypto.h>
+
+// OpenSSL/ssl/Makefile
+TOP= ..
+INCLUDES= -I${TOP}
+```
+
+### Macro
+{: .subtitle}
+
+這篇[宏定義的黑魔法](https://onevcat.com/2014/01/black-magic-in-macro/)很有意思地解釋了一些macro的寫法和實現細節。GNU的[文檔](https://gcc.gnu.org/onlinedocs/cpp/Macros.html)則詳細地梳理了macro，譬如將其分類為object-like和function-like。
 
 ### 指針變量
 {: .subtitle}
@@ -37,8 +58,8 @@ size_t (*fp[3])(int); // is an array of function pointers
 指針類型用來定義變量、強制類型轉換、函數參數。習慣上用```typedef```+指針類型簡化變量聲明：
 
 ```c
-typedef size_t (*pf)[10];
-pf ugly_func;
+typedef size_t (*pf)(char);
+pf oprations[10];
 ```
 
 - 函數名(function designator)會被隱式轉換為函數指針；
