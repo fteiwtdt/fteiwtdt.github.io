@@ -39,10 +39,12 @@ TOP= ..
 INCLUDES= -I${TOP}
 ```
 
-### Macro
+### Macros
 {: .subtitle}
 
-這篇[宏定義的黑魔法](https://onevcat.com/2014/01/black-magic-in-macro/)很有意思地解釋了一些macro的寫法和實現細節。GNU的[文檔](https://gcc.gnu.org/onlinedocs/cpp/Macros.html)則詳細地梳理了macro，譬如將其分類為object-like和function-like。
+這篇[宏定義的黑魔法](https://onevcat.com/2014/01/black-magic-in-macro/)很有意思地解釋了一些macro的寫法和實現細節，當中的要點在GNU的[文檔](https://gcc.gnu.org/onlinedocs/cpp/Macros.html)中都有進一步而且更有條理的介紹，譬如把macros分為object-like和function-like。其中存在比較多pitfalls的是function-like macros。
+
+```#pragma ```的意思是pragmatic，作用是與編譯器交互。Clang的[文檔](http://clang.llvm.org/docs/UsersManual.html#diagnostics_pragmas)列出了詳細的可選項。
 
 ### 指針變量
 {: .subtitle}
@@ -103,7 +105,7 @@ id msg_Send(id, SEL, ...);
 #pragma mark - *LABEL*
 ```
 
-不過在Xcode 4.6.3中```#pragma mark```緊跟@```implementation```沒有效果，可能因為舊版本Xcode自動indent類函數名顯示為次級列表而忽略掉首個notation，添加一個空block作為第一層次級列表條目間隔開就正常顯示了。
+不過在Xcode 4.6.3中```#pragma mark```緊跟```@implementation```沒有效果，可能因為舊版本Xcode自動indent類函數名顯示為次級列表而忽略掉首個notation，添加一個空block作為第一層次級列表條目間隔開就正常顯示了。
 
 ```objc
 // No divider
@@ -115,4 +117,11 @@ id msg_Send(id, SEL, ...);
 #pragma mark -
 ```
 
-在註釋中使用```TODO:```、```FIXME:```和```MARK:```也可以在Xcode中顯示和跳轉。
+在註釋中使用```TODO:```、```FIXME:```和```MARK:```也可以在navigation中顯示和跳轉。
+
+### Building
+{: .subtitle}
+
+使用```xcodebuild```命令編譯時需要指定scheme、target、project和workspace，官方[文檔](https://developer.apple.com/library/archive/featuredarticles/XcodeConcepts/Concept-Targets.html)對此有詳細介紹。如其開篇所言，與編譯過程關係最密切的是target。通過設置targets之間的依賴關係來實現project內的分庫聯合編譯，projects之間的聯合編譯則由放入同一個workspace內再設置其依賴關係來實現。
+
+另外很多開源工程使用了GNU套件來管理project，這篇[The GNU configure and build system](https://airs.com/ian/configure/)是難得的佳作，詳細介紹了autoconf等工具的歷史和用法。使用對應的工具生成Makefile之後就可以用在Xcode中的編譯了。
