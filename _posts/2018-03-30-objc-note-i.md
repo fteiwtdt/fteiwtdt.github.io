@@ -11,17 +11,17 @@ date: 2018-03-30
 
 ```objc
 // config.h
-FOUNDATION_EXTERN NSString * const kGREETING;
+FOUNDATION_EXTERN NSString * const kGreeting;
 // config.c
-NSString * const kGREETING = @"Hello, world!";
+NSString * const kGreeting = @"Hello, world!";
 ```
 
-對應地定義file scope私有變量是在源文件中使用```static```，“A static function/variable is only 'seen' within translate unit”。定義私有property的方式是使用class extension，定義只讀property的方式是在class extension中重聲明為readwrite。
+對應地定義file scope私有變量是在源文件中使用```static```，“A static function/variable is only 'seen' within translate unit”。ObjC定義私有property的方式是使用class extension，定義只讀property的方式是在class extension中重聲明為readwrite。
 
 使用```#import```是為了防止重複包含，即所謂的「include guides」。傳統的做法是使用```#define```，其寫法也有幾種風格，BSD是把文件名大寫、前後帶下標。在文檔中解釋以下標開頭是C保留作內部實現的用法。另一種方法是使用```#pragma once```，優點是代碼更簡潔、預編譯更快，缺點是兼容性較差。譬如ARM就不推薦使用。此外在頭文件中減少不必要的```#import/include```、使用forward class declaration代替，可以使預編譯速度更快。
 
 ```c
-// $FreeBSD: /usr/src/usr.bin/include/stdio.h
+// $FreeBSD: /usr/src/include/stdio.h
 #ifndef _STDIO_H_
 #define _STDIO_H_
 
@@ -31,18 +31,19 @@ NSString * const kGREETING = @"Hello, world!";
 對於```#include```的文件名使用引號和尖括號的區別，通常的解釋是引號表示從當前目錄開始搜索，尖括號表示從系統目錄開始搜索。不過也可以看到使用尖括號包含源碼目錄中的頭文件。[這裡](https://stackoverflow.com/questions/4118376/what-are-the-rules-on-include-xxx-h-vs-include-xxx-h)解釋其實尖括號表示從編譯器指定的目錄開始搜索。
 
 ```c
-// OpenSSL/ssl/ssl.h
-#include <openssl/crypto.h>
+// $FreeBSD: /usr/src/lib/libc/stdio/fgetc.c
+#include <stdio.h>
 
-// OpenSSL/ssl/Makefile
-TOP= ..
-INCLUDES= -I${TOP}
+// $FreeBSD: /usr/src/lib/libc/Makefile
+CFLAGS+=-I${.CURDIR}/include  # /usr/src/include
 ```
 
 ### Macros
 {: .subtitle}
 
-這篇[宏定義的黑魔法](https://onevcat.com/2014/01/black-magic-in-macro/)很有意思地解釋了一些macro的寫法和實現細節，當中的要點在GNU的[文檔](https://gcc.gnu.org/onlinedocs/cpp/Macros.html)中都有進一步而且更有條理的介紹，譬如把macros分為object-like和function-like。其中存在比較多pitfalls的是function-like macros。
+這篇[宏定義的黑魔法](https://onevcat.com/2014/01/black-magic-in-macro/)很有意思地解釋了一些macro的寫法和實現細節，當中的要點在GNU的[文檔](https://gcc.gnu.org/onlinedocs/cpp/Macros.html)中都有詳細的介紹和分類，譬如把macros分為object-like和function-like。其中存在比較多pitfalls的是function-like macros。
+
+```#ifdef/ifndef ```只測試單個object，```#if ```測試後面的表達式，適用於多個條件的組合。
 
 ```#pragma ```的意思是pragmatic，作用是與編譯器交互。Clang的[文檔](http://clang.llvm.org/docs/UsersManual.html#diagnostics_pragmas)列出了詳細的可選項。
 
@@ -122,6 +123,6 @@ id msg_Send(id, SEL, ...);
 ### Building
 {: .subtitle}
 
-使用```xcodebuild```命令編譯時需要指定scheme、target、project和workspace，官方[文檔](https://developer.apple.com/library/archive/featuredarticles/XcodeConcepts/Concept-Targets.html)對此有詳細介紹。如其開篇所言，與編譯過程關係最密切的是target。通過設置targets之間的依賴關係來實現project內的分庫聯合編譯，projects之間的聯合編譯則由放入同一個workspace內再設置其依賴關係來實現。
+使用```xcodebuild```命令編譯時需要指定scheme、target、project和workspace，官方[文檔](https://developer.apple.com/library/archive/featuredarticles/XcodeConcepts/Concept-Targets.html)對此有詳細介紹。如其開篇所言，與編譯過程關係最密切的是target。通過設置targets之間的依賴關係來實現project內的分庫聯合編譯，projects之間的聯合編譯通過放入同一個workspace之中再設置其依賴關係來實現。
 
 另外很多開源工程使用了GNU套件來管理project，這篇[The GNU configure and build system](https://airs.com/ian/configure/)是難得的佳作，詳細介紹了autoconf等工具的歷史和用法。使用對應的工具生成Makefile之後就可以用在Xcode中的編譯了。

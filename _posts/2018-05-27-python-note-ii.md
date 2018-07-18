@@ -49,6 +49,6 @@ class S(M, N):
 
 Metaclass是“面向類對象編程”，輿之相關的是構造類的過程和訪問類屬性，提供了實現面向對象特性的函數和描述類擁有的元素，譬如提供```cls.__mro__```來上溯類簇。Python reference中提到訪問屬性時上溯除metaclass之外的類簇，不過訪問類簇首先要訪問metaclass。相比之下Lua更直接了當一點，通過上溯metaclass來實現繼承，這樣的做法倒很好地解釋了metaclass的作用。```type```類似```object```的工廠類或helper類，故成為所有metaclass的基類。
 
-調用dot notation訪問attribute存在3種情況：1）```__dict__```的k-v pairs，2）descriptor，3）special methods。通過內置函數調用special methods不會通過```__getattribute__```。Python reference解釋原因在於metaclass也實現了同樣的方法，如果不繞過```__getattribute__```直接返回類對象的實現，會因訪問metaclass而返回其中的實現。這違背了Python查找attribute不訪問metaclass的原則，或所謂的“metaclass confusion”。Lua也存在類似的設計繞過metaclass。應用duck typing實現descriptor但又嚴格區分metaclass和object的設計，有點耐人尋味。
+調用dot notation訪問attribute存在3種情況：1）```__dict__```的k-v pairs，2）descriptor，3）special methods。通過內置函數調用special methods不會通過```__getattribute__```。Python reference解釋原因在於metaclass也實現了同樣的方法，如果不繞過```__getattribute__```直接返回類對象的實現，會因訪問metaclass而返回其中的實現。這違背了Python查找attribute不訪問metaclass的原則，或所謂的“metaclass confusion”。Lua也存在類似的設計繞過metaclass。
 
-Python訪問屬性複雜如此的原因看來源於dot notation從沿用C struct訪問內存的方式遷移到對函數求值。Lua每一次訪問以查找並調用```__index```函數為終點，Lisp訪問列表元素只通過函數```car```、```cdr```：在《*ANSI Common Lisp*》中提到這是函數式編程的方式。所以Lua的代碼習慣上緩存常用函數或模塊，在Python的sre中也可見到這樣的優化。
+Python訪問屬性複雜如此的原因看來源於dot notation從沿用C struct訪問內存的方式遷移到對函數求值。Lua每一次訪問以查找並調用```__index```函數為終點，Lisp訪問列表元素只通過函數```car```、```cdr```：在《*ANSI Common Lisp*》中提到這是函數式編程的方式。Lua習慣上緩存常用函數或模塊，在Python的sre中也可見到這樣的應用。
