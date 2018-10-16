@@ -8,27 +8,6 @@
 }
 
 @font-face {
-    font-family: 'DejaVu Sans Mono';
-    font-weight: 400;
-    font-style: italic;
-    src: url('../fonts/DejaVuSansMono-Oblique.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'DejaVu Sans Mono';
-    font-weight: 700;
-    font-style: normal;
-    src: url('../fonts/DejaVuSansMono-Bold.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'DejaVu Sans Mono';
-    font-weight: 700;
-    font-style: italic;
-    src: url('../fonts/DejaVuSansMono-BoldOblique.woff') format('woff');
-}
-
-@font-face {
     font-family: 'iMing';
     font-weight: 400;
     font-style: normal;
@@ -48,7 +27,7 @@ $line-height: 1.36;
 $code-line-height: 1.2;
 
 h1, h2, h3, h4, h5, h6, strong {
-	font-weight: $bold-font-weight;
+    font-weight: $bold-font-weight;
 }
 
 h1 { font-size: 1.4 * $font-size; }
