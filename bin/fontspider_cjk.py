@@ -10,7 +10,7 @@ import re
 from fontTools import subset
 
 # Referred to https://github.com/fonttools/fonttools/blob/master/Snippets/woff2_compress.py
-from fontTools.ttLib import TTFont
+from fontTools.ttLib import TTFont, sfnt
 from fontTools.ttx import makeOutputFileName
 
 # CJK Symbols And Punctuation : \u3000-\u303F
@@ -73,6 +73,7 @@ def main(args):
     subsetter = subset.Subsetter()
     subsetter.populate(glyphs=[], gids=[], unicodes=unicodes, text='')
     subsetter.subset(font)
+    sfnt.USE_ZOPFLI = True
     font.flavor = 'woff'
     font.save(out_fontfile, reorderTables=False)
 
