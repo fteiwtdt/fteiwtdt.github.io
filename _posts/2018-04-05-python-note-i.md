@@ -9,7 +9,7 @@ date: 2018-04-05
 ### 一部分pythonic
 {: .subtitle}
 
-Python中sequence有不少獨特之處，支持slice分片、負數值索引。初學時很不適應負數值索引，[這裡](https://www.liaoxuefeng.com/discuss/001409195742008d822b26cf3de46aea14f2b7378a1ba91000/001511101277134dbbdd0730c2c43b4af64a879be35fd3d000)利用負數值索引巧妙實現楊輝三角，印象深刻。Python中的sequence係實現了iterator protocol，即```__iter__()```和```next()```方法的objects。列表推導式「list comprehension」則提供了一種簡潔迭代sequence的方式。
+Python中sequence有不少獨特之處，支持slice、負數值索引。初學時很不適應負數值索引，[這裡](https://www.liaoxuefeng.com/discuss/001409195742008d822b26cf3de46aea14f2b7378a1ba91000/001511101277134dbbdd0730c2c43b4af64a879be35fd3d000)利用負數值索引巧妙實現楊輝三角，印象深刻。所謂的sequence係實現了iterator protocol，即```__iter__()```和```next()```方法的objects。列表推導式「list comprehension」則提供了一種簡潔迭代sequence的方式。
 
 Python中返回sequence還會自動解包從而實現返回多個值。不過接收自動解包的左值參數數量必須與返回的sequence長度一致，不似Lua會把超出範圍的左值參數設置為nil。所以Python返回多個值的函數每處```return```的sequence長度都必須一致，否則會在自動解包的過程中拋出異常。
 
@@ -21,7 +21,7 @@ Python中返回sequence還會自動解包從而實現返回多個值。不過接
 >
 > -- "The Python Language Reference"
 
-在 [[PEP 288]](https://www.python.org/dev/peps/pep-0288/) 中提到其出發點是擴展作為函數的generator，相比class實現具有更高可讀性和性能，加之自己積累的部分經驗，函數式編程也被我視為pythonic之一 [[3]](#ref3)。其中函數的封裝解耦、重用就聯想到decorator。裝飾器作為高階函數是實現函數解耦、組合的方式，相當于FP實現的composite模式。
+在 [[PEP 288]](https://www.python.org/dev/peps/pep-0288/) 中提到其出發點是擴展作為函數的generator，相比class實現具有更高可讀性和性能。函數式編程也被我視為pythonic之一，其中函數的封裝解耦、重用就聯想到decorator。裝飾器作為高階函數是實現函數解耦、組合的方式，相當于FP實現的composite模式。
 
 #### *Ref:*
 [[1]](#ref1): [Charming Python](http://gnosis.cx/publish/programming/charming_python_b5.txt)

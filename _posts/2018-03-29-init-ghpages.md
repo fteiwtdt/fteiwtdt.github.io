@@ -9,20 +9,12 @@ date: 2018-03-29
 ### 佈局
 {: .subtitle}
 
-今時今日使用移動設備的場景更多、時長更長。為方便在手機上閱讀博文筆記，使用響應式佈局優先適配移動端瀏覽器。刪除傳統blog中的“Read more”按鈕，把首頁做成類似app的list，方便移動端觸摸打開鏈接。iOS 6上的舊版Safari對flexbox支持得不好，加上不熟悉CSS，只簡單通過media查詢適配桌面和移動端。
+今時今日使用移動設備的場景更多、時長更長。為方便在手機上閱讀博文筆記，使用響應式佈局優先適配移動端瀏覽器。刪除傳統blog中的“Read more”按鈕，把首頁做成類似app的list，方便移動端觸摸打開鏈接。iOS 6上的舊版Safari對flexbox支持得不好，暫時通過media查詢適配桌面和移動端。
 
 ### CSS
 {: .subtitle}
 
-Jekyll默認的minima theme很不錯，不過想要護眼就要另外配置了。抄了[FT中文網](http://www.ftchinese.com)的護眼色調，代碼高亮選擇了深色主題的[Monokai](https://gist.github.com/wdullaer/e942cdd70d292e954166)。iOS缺少monospace字體而以sans顯示，需要在CSS中添加「font-face」link到等寬字體文件用於代碼顯示，使用支持較廣體積又小的woff格式。另按照《*Mastering Regular Expressions*》中提到的現代書信體格式設置段落間空一行。
-
-```python
-def fibonacci():
-    i, j = 0, 1
-    while True:
-        yield i
-        i, j = j, i+j
-```
+Jekyll默認的minima theme很不錯，不過想要護眼就要另外配置了。抄了[FT中文網](http://www.ftchinese.com)的護眼色調，代碼高亮選擇了深色主題的[Monokai](https://gist.github.com/wdullaer/e942cdd70d292e954166)。iOS缺少monospace字體而以sans顯示，需要在CSS中添加「font-face」link到等寬字體文件用於代碼顯示，webfont中woff格式兼容性比較好。另按照《*Mastering Regular Expressions*》中提到的現代書信體格式設置段落間空一行。
 
 ### MathJax
 {: .subtitle}
