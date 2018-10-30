@@ -18,7 +18,7 @@ NSString * const kGreeting = @"Hello, world!";
 
 對應地定義file scope私有變量是在源文件中使用```static```，“A static function/variable is only 'seen' within translate unit”。ObjC定義私有property的方式是使用class extension，定義只讀property的方式是在class extension中重聲明為readwrite。
 
-使用```#import```是為了防止重複包含，即所謂的「include guides」。傳統的做法是使用```#define```，其寫法也有幾種風格，BSD是把文件名大寫、前後帶下標。在文檔中解釋以下標開頭是C保留作內部實現的用法。另一種方法是使用```#pragma once```，優點是代碼更簡潔、預編譯更快，缺點是兼容性較差。譬如ARM就不推薦使用。此外在頭文件中減少不必要的```#import/include```、使用forward class declaration代替，可以使預編譯速度更快。
+使用```#import```是為了防止重複包含，即所謂的「include guard」。傳統的做法是使用```#define```，其寫法也有幾種風格，BSD是把文件名大寫、前後帶下標。在文檔中解釋以下標開頭是C保留作內部實現的用法。另一種方法是使用```#pragma once```，優點是代碼更簡潔、預編譯更快，缺點是兼容性較差。譬如ARM就不推薦使用。此外在頭文件中減少不必要的```#import/include```、使用forward class declaration代替，可以使預編譯速度更快。
 
 ```c
 // $FreeBSD: /usr/src/include/stdio.h
