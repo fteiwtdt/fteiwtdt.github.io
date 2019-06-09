@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "ObjC筆記I：Misc"
-date: 2018-03-30
+title: "ObjC筆記：Basic"
+date: 2018-03-30 +0800
 ---
 
 ### Header files

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Python筆記I：pythonic"
-date: 2018-04-05
+title: "Python筆記：pythonic"
+date: 2018-04-05 +0800
 ---
 
 之前初學Python之後想找份相關的工作，在一次面試中被問到怎麼看pythonic以及being pythonic的好處<!-- more -->。我第一次接觸到這個詞，交卷後搜索才知道意思，和面試官卻沒有就此交流更多。看到有些中文翻譯為“Python風味”，於是理解為“地道”，類似學英語是熟悉語言之後的做法。

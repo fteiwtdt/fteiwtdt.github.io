@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Python筆記II：OOP"
-date: 2018-05-27
+title: "Python筆記：OOP"
+date: 2018-05-27 +0800
 ---
 
 ### Attributes
